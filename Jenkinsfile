@@ -15,7 +15,7 @@ pipeline {
     stage ('Check-Git-Secrets') {
       steps {
         sshagent(['CICD-Tools']) {
-        sh 'ubuntu@172.25.2.127'
+        sh 'ubuntu@3.130.59.82'
         sh 'rm trufflehog || true'
         sh 'docker run gesellix/trufflehog --json https://github.com/containergitrepo/CI-CD.git > trufflehog'
         sh 'cat trufflehog'
