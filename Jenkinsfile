@@ -34,7 +34,7 @@ pipeline {
     stage ('SAST') {
       steps {
         withSonarQubeEnv('sonar') {
-          sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
+          sh 'mvn sonar:sonar'
           sh 'cat target/sonar/report-task.txt'
         }
       }
