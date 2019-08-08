@@ -1,7 +1,10 @@
 package tr.com.jowl.utils;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -12,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  * @version 1.0
  * Date 4/27/2018.
  */
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
 public class PassEncodingTest {
 
     public static BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
