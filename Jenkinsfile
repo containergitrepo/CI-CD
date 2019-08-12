@@ -45,9 +45,10 @@ pipeline {
       sh 'mvn clean package'
        }
     }
-    stage('Publish test results') {
+    stage('Unit Testing and Code Coverage') {
       steps {
       junit 'target/surefire-reports/*.xml'
+      step( [ $class: 'JacocoPublisher' ] )
   } 
     }
     }
