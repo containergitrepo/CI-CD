@@ -55,9 +55,6 @@ pipeline {
             steps {
                 script {
                     app = docker.build("123321bha/todoapp")
-                    app.inside {
-                        sh 'echo $(curl localhost:8080)'
-                    }
                 }
             }
         }
