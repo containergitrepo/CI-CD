@@ -1,5 +1,4 @@
 FROM openjdk:8
 EXPOSE 8080
-COPY /var/lib/jenkins/workspace/CICD-DevSecOps-Pipeline/target/todoApp.jar /opt/containers/
-WORKDIR /opt/containers/
+ADD target/todoApp.jar todoApp.jar
 ENTRYPOINT ["java","-jar","/todoApp.jar"]
