@@ -50,6 +50,19 @@ pipeline {
       junit 'target/surefire-reports/*.xml'
       step( [ $class: 'JacocoPublisher' ] )
   } 
+      stage('Build Docker Image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    app = docker.build("123321bha/todoapp")
+                    app.inside {
+                        sh 'echo $(curl localhost:8080)'
+                    }
+                }
+            }
+        }
     }
     }
     }
