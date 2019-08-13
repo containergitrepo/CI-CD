@@ -50,6 +50,7 @@ pipeline {
       junit 'target/surefire-reports/*.xml'
       step( [ $class: 'JacocoPublisher' ] )
   } 
+    }
       stage('Build Docker Image') {
             when {
                 branch 'master'
