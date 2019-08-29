@@ -71,7 +71,7 @@ pipeline {
      stage('analyze') {
             steps {
                 sh 'echo "docker.io/123321bha/todoapp `pwd`/Dockerfile" > anchore_images || true'
-                anchore name: 'anchore_images'
+                anchore name: 'anchore_images', bailOnFail: false, bailOnPluginFail: false
             }
         }
     }
