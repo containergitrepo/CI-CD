@@ -3,6 +3,10 @@ pipeline {
   tools {
     maven 'Maven'
   }
+  environment {
+        //be sure to replace "willbla" with your own Docker Hub username
+        DOCKER_IMAGE_NAME = "123321bha/todoapp"
+    }
   stages {
     stage ('Initialize') {
       steps {
