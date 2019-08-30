@@ -72,13 +72,28 @@ pipeline {
                 }
             }
         }
-     stage('analyze') {
+     stage('Scanning the Image') {
             steps {
                 sh 'echo "docker.io/123321bha/todoapp `pwd`/Dockerfile" > anchore_images || true'
                 anchore name: 'anchore_images', bailOnFail: false, bailOnPluginFail: false
                 sh'''
                     for i in `cat anchore_images | awk '{print $1}'`;do docker rmi $i; done
                 '''
+            }
+        }
+    
+    stage('DeployToProduction') {
+            when {
+                branch 'master'
+            }
+            steps {
+                input 'Deploy to Production?'
+                milestone(1)
+                kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'todo-kube.yml',
+                    enableConfigSubstitution: true
+                )
             }
         }
     }
