@@ -82,10 +82,7 @@ pipeline {
             }
         }
     
-    stage('DeployToProduction') {
-            when {
-                branch 'master'
-            }
+    stage('Deploy To Production') {
             steps {
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
