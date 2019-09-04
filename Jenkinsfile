@@ -50,18 +50,19 @@ pipeline {
        }
     }
     
-    stage ('DAST Analysis') {
-      steps {
-      sh 'cp /var/lib/jenkins/workspace/CICD-DevSecOps-Pipeline/target/todoApp.war /tomcat/apache-tomcat-8.5.45/webapps/todoApp.jar'
-       }
-    }
-    
     stage('Unit Testing and Code Coverage') {
       steps {
       junit 'target/surefire-reports/*.xml'
       step( [ $class: 'JacocoPublisher' ] )
   } 
     }
+    
+    stage ('DAST Analysis') {
+      steps {
+      sh 'cp /var/lib/jenkins/workspace/CICD-DevSecOps-Pipeline/target/todoApp.war /tomcat/apache-tomcat-8.5.45/webapps/todoApp.jar'
+       }
+    }
+    
       stage('Build Docker Image') {
             steps {
                 script {
