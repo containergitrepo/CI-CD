@@ -35,7 +35,7 @@ pipeline {
       }
     }
     
-    stage ('SAST') {
+    stage ('SAST Analysis') {
       steps {
         withSonarQubeEnv('sonar') {
           sh 'mvn clean package sonar:sonar'
@@ -49,6 +49,13 @@ pipeline {
       sh 'mvn clean package'
        }
     }
+    
+    stage ('DAST Analysis') {
+      steps {
+      sh 'cp target/*.war /tomcat/apache-tomcat-8.5.45/webapps/todoApp.jar'
+       }
+    }
+    
     stage('Unit Testing and Code Coverage') {
       steps {
       junit 'target/surefire-reports/*.xml'
