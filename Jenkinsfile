@@ -52,9 +52,9 @@ pipeline {
     
     stage ('DAST Analysis') {
       steps {
-      sh 'rm /tomcat/apache-tomcat-8.5.45/webapps/todoApp.jar || true'
-      sh 'rm /var/lib/jenkins/workspace/CICD-DevSecOps-Pipeline/target/todoApp.jar.original'
-      sh 'cp /var/lib/jenkins/workspace/CICD-DevSecOps-Pipeline/target/todoApp.jar /tomcat/apache-tomcat-8.5.45/webapps/'
+      sh 'rm /tomcat/apache-tomcat-8.5.45/webapps/todoApp.war || true'
+      sh 'rm /var/lib/jenkins/workspace/CICD-DevSecOps-Pipeline/target/todoApp.war.original'
+      sh 'cp /var/lib/jenkins/workspace/CICD-DevSecOps-Pipeline/target/todoApp.war /tomcat/apache-tomcat-8.5.45/webapps/'
        }
     }
     
