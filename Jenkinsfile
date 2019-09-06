@@ -95,7 +95,7 @@ pipeline {
             }
         }
     
-    stage('Deploy To Production') {
+    stage('Deploy To Kubernetes') {
             steps {
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
