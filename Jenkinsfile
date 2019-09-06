@@ -55,7 +55,7 @@ pipeline {
       sh 'rm /tomcat/apache-tomcat-8.5.45/webapps/todoApp.war || true'
       sh 'rm /var/lib/jenkins/workspace/CICD-DevSecOps-Pipeline/target/todoApp.war.original'
       sh 'cp /var/lib/jenkins/workspace/CICD-DevSecOps-Pipeline/target/todoApp.war /tomcat/apache-tomcat-8.5.45/webapps/'
-      sh 'docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:8081/todoApp/'
+      sh 'docker run -t owasp/zap2docker-stable zap-baseline.py -t http://172.25.2.203:8081/todoApp/'
        }
     }
     
